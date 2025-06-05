@@ -1,0 +1,54 @@
+Marketplace Baju Integrasi 3D
+Latar Belakang Website
+Belanja pakaian secara online telah menjadi tren dominan, menawarkan kemudahan dan beragam pilihan. Namun, salah satu tantangan terbesar yang dihadapi konsumen adalah ketidakmampuan untuk mencoba pakaian secara fisik sebelum membeli. Hal ini seringkali menimbulkan keraguan terkait kesesuaian model, ukuran, dan bagaimana pakaian tersebut akan terlihat saat dikenakan. 
+
+Akibatnya, konsumen mungkin merasa kurang percaya diri dalam mengambil keputusan pembelian, yang berujung pada potensi kekecewaan saat produk diterima atau bahkan peningkatan rasio pengembalian barang. Tingginya angka pengembalian barang tidak hanya merugikan konsumen dari segi waktu dan biaya, tetapi juga memberikan beban tambahan bagi penjual.
+
+Keterbatasan dalam memvisualisasikan produk pada diri sendiri secara online menjadi jurang pemisah antara kenyamanan belanja digital dan kepastian yang ditawarkan oleh pengalaman belanja konvensional.
+
+Fitur Yang Akan Dibuat
+Fitur Umum :
+Login & Logout + Sign Up: Untuk mendaftar, masuk, dan keluar dari akun user	.
+Profile Page: Tempat mengisi dan mengedit data pribadi user.
+Laporan Produk tersedia (Homepage): Menampilkan daftar produk yang tersedia di platform, dengan opsi fitur:
+Search Bar: Memungkinkan user memfilter produk berdasarkan nama atau kata kunci.
+Kategori Bar: Memungkinkan user memfilter produk berdasarkan jenis, harga, ukuran, dan warna.
+
+Fitur Pembeli (Customer) :
+Keranjang Belanja: Menampung beberapa produk yang dipilih untuk dibeli sekaligus.
+Fitur tambahan: Menambah, mengubah jumlah, dan menghapus produk dari keranjang
+Checkout / Pembayaran: Proses konfirmasi pembelian produk, termasuk pemilihan alamat dan metode pembayaran.
+History Pesanan: Display riwayat pembelian / checkout user beserta statusnya.
+Status: “Dalam Keranjang”, “Dalam Pengiriman”, “Selesai”
+Ulasan & Rating Produk: Fitur untuk add, edit, dan delete pendapat mengenai kualitas produk yang telah dibeli.
+Virtual Try On: Pembeli dapat generate simulasi penggunaan baju yang akan dibelinya 
+
+Fitur Penjual (Seller) :
+Manajemen Produk: Fitur untuk add, edit, dan delete(disable) produk yang dijual.
+Manajemen Pesanan: Menampilkan data pesanan produk, termasuk jumlah, size, dan warna produk.
+Fitur tambahan: Dapat mengubah status "Diproses" menjadi "Dikirim"
+Laporan Stok Produk: Menampilkan sisa stok produk yang tersedia.
+Laporan Penjualan Produk: Menyajikan data penjualan per produk milik penjual, dengan filter berdasarkan kategori, harga produk, dan rentang tanggal.
+
+Fitur Admin :
+Manajemen Users: Fitur untuk edit role dan delete(disable) akun user.
+Manajemen Produk Global: Fitur untuk edit dan delete(disable) semua produk di platform.
+Manajemen Kategori Produk: Fitur untuk add, edit, dan delete(disable) kategori produk di platform.
+Manajemen Ulasan: Menghapus ulasan produk yang melanggar aturan.
+Laporan Pesanan Global: Menampilkan semua pesanan yang terjadi di platform beserta status masing-masing pesanan.
+Laporan Penjualan di Platform: Menampilkan data penjualan semua produk, dengan opsi filter berdasarkan kategori produk, harga produk, dan rentang tanggal.
+
+
+
+untuk virtual try On nya sendiri tidak usah di kerjakan dulu itu bagian akhir saja
+
+ANDA PERLU INGAT BAHWA INI BUKAN UNTUK PRODUCTION tapi prototipe nyata untuk dipresentasi kan dosen sebagai nilai tugas
+jadi jangan terlalu menghabiskan waktu untuk hal hal yang tidak penting dan fokus kepada fungsi utama nya works dimana frontend -> controller -> backend dan sebaliknya yang bisa dulu, jangan buatkan API yang tidak berguna, tapi jika berguna gunakan saja, intinya saya tidak mau anda membuatkan production ready karena 
+pengalaman saya itu menghabiskan waktu sia sia, karena project ini hanya untuk dipresentasi dosen dalam bentuk sharescreen layar saya.
+
+Saya akan tetap menggunakan mysql dan berikan nama database wfd_finale
+
+buatkan susunan bertahap tapi juga langsung sambungkan frontendnya untuk uji coba langsung ya, dan frontend harus minimalis dan harus super friendly untuk user experiencenya sesuai kaidah user experience
+
+
+tambahan : saya ingin anda membuatkan frontend nya dimata dosen seperti aplikasi dengan UI/UX yang hebat dan memukau dosen
