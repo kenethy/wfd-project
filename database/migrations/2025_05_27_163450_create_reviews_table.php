@@ -27,20 +27,20 @@ return new class extends Migration
             $table->integer('helpful_count')->default(0);
             $table->integer('not_helpful_count')->default(0);
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('approved');
-            
+
             // Seller response
             $table->text('seller_response')->nullable();
             $table->timestamp('seller_response_at')->nullable();
             $table->foreignId('seller_response_by')->nullable()->constrained('users')->onDelete('set null');
-            
+
             // Review quality metrics
             $table->json('quality_metrics')->nullable()->comment('Detailed ratings for different aspects');
             $table->boolean('would_recommend')->nullable();
             $table->string('customer_name')->nullable()->comment('Display name for review');
             $table->boolean('is_anonymous')->default(false);
-            
+
             $table->timestamps();
-            
+
             // Indexes for performance
             $table->index(['product_id', 'status']);
             $table->index(['user_id', 'created_at']);
@@ -50,7 +50,7 @@ return new class extends Migration
     }
 
     /**
-     * Run the migrations.
+     * Reverse the migrations.
      */
     public function down(): void
     {

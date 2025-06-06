@@ -28,10 +28,10 @@
             <!-- Faciona Logo -->
             <div class="flex justify-center mb-8">
                 <div class="flex items-center space-x-3 group">
-                    <div
-                        class="w-12 h-12 bg-gradient-primary rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 animate-float">
-                        <span class="text-white font-bold text-xl">F</span>
-                    </div>
+                        <div
+                            class="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 animate-float">
+                            <span class="text-white font-bold text-sm">F</span>
+                        </div>
                     <span class="text-3xl font-bold text-gradient">Faciona</span>
                 </div>
             </div>

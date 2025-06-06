@@ -150,20 +150,27 @@
                         <span class="text-2xl font-bold text-gradient">Faciona</span>
                     </a>
 
-                    <!-- Search Bar -->
+                    <!-- Search Bar - Only show on products index page -->
+                    @if(request()->routeIs('products.index'))
                     <div class="hidden md:flex items-center flex-1 max-w-lg">
                         <div class="relative w-full">
-                            <input type="text" placeholder="Cari produk fashion terbaru..."
-                                class="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-slate-50 hover:bg-white transition-colors duration-200">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <svg class="h-5 w-5 text-slate-400" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                </svg>
-                            </div>
+                            <form action="{{ route('products.index') }}" method="GET" class="w-full">
+                                <input type="text"
+                                       name="search"
+                                       value="{{ request('search') }}"
+                                       placeholder="Cari produk fashion terbaru..."
+                                       class="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-slate-50 hover:bg-white transition-colors duration-200">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <svg class="h-5 w-5 text-slate-400" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </div>
+                            </form>
                         </div>
                     </div>
+                    @endif
                 </div>
 
                 <!-- Navigation Links -->
@@ -330,7 +337,17 @@
                 </div>
 
                 <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
+                <div class="md:hidden flex items-center space-x-3">
+                    <!-- Mobile Search Button - Only show on products index -->
+                    @if(request()->routeIs('products.index'))
+                    <button onclick="toggleMobileSearch()" class="text-slate-700 hover:text-purple-600 focus:outline-none focus:text-purple-600 p-2">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                    @endif
+
                     <button class="text-gray-700 hover:text-blue-600 focus:outline-none focus:text-blue-600">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -340,6 +357,27 @@
                 </div>
             </div>
         </div>
+
+        <!-- Mobile Search Bar - Only show on products index -->
+        @if(request()->routeIs('products.index'))
+        <div id="mobile-search" class="md:hidden bg-white border-t border-slate-200 px-4 py-3 hidden">
+            <form action="{{ route('products.index') }}" method="GET" class="w-full">
+                <div class="relative">
+                    <input type="text"
+                           name="search"
+                           value="{{ request('search') }}"
+                           placeholder="Cari produk fashion terbaru..."
+                           class="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-slate-50">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </form>
+        </div>
+        @endif
     </nav>
 
     <!-- Main Content -->
@@ -450,6 +488,21 @@
                 }, index * 100);
             });
         });
+
+        // Toggle mobile search bar
+        function toggleMobileSearch() {
+            const mobileSearch = document.getElementById('mobile-search');
+            if (mobileSearch) {
+                mobileSearch.classList.toggle('hidden');
+                // Focus on search input when opened
+                if (!mobileSearch.classList.contains('hidden')) {
+                    const searchInput = mobileSearch.querySelector('input[name="search"]');
+                    if (searchInput) {
+                        setTimeout(() => searchInput.focus(), 100);
+                    }
+                }
+            }
+        }
     </script>
 
     <script>

@@ -101,8 +101,54 @@ Route::middleware('auth')->group(function () {
 
     // Admin routes
     Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('admin.dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+
+        // User Management
+        Route::prefix('users')->name('users.')->group(function () {
+            Route::get('/', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('index');
+            Route::get('/{user}', [App\Http\Controllers\Admin\UserController::class, 'show'])->name('show');
+            Route::put('/{user}/role', [App\Http\Controllers\Admin\UserController::class, 'updateRole'])->name('update-role');
+            Route::put('/{user}/toggle-status', [App\Http\Controllers\Admin\UserController::class, 'toggleStatus'])->name('toggle-status');
+            Route::delete('/{user}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('destroy');
+        });
+
+        // Product Management
+        Route::prefix('products')->name('products.')->group(function () {
+            Route::get('/', [App\Http\Controllers\Admin\ProductController::class, 'index'])->name('index');
+            Route::get('/{product}', [App\Http\Controllers\Admin\ProductController::class, 'show'])->name('show');
+            Route::get('/{product}/edit', [App\Http\Controllers\Admin\ProductController::class, 'edit'])->name('edit');
+            Route::put('/{product}', [App\Http\Controllers\Admin\ProductController::class, 'update'])->name('update');
+            Route::put('/{product}/toggle-status', [App\Http\Controllers\Admin\ProductController::class, 'toggleStatus'])->name('toggle-status');
+            Route::delete('/{product}', [App\Http\Controllers\Admin\ProductController::class, 'destroy'])->name('destroy');
+        });
+
+        // Category Management
+        Route::prefix('categories')->name('categories.')->group(function () {
+            Route::get('/', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('index');
+            Route::get('/create', [App\Http\Controllers\Admin\CategoryController::class, 'create'])->name('create');
+            Route::post('/', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('store');
+            Route::get('/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'show'])->name('show');
+            Route::get('/{category}/edit', [App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('edit');
+            Route::put('/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('update');
+            Route::put('/{category}/toggle-status', [App\Http\Controllers\Admin\CategoryController::class, 'toggleStatus'])->name('toggle-status');
+            Route::delete('/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('destroy');
+        });
+
+        // Review Management
+        Route::prefix('reviews')->name('reviews.')->group(function () {
+            Route::get('/', [App\Http\Controllers\Admin\ReviewController::class, 'index'])->name('index');
+            Route::get('/{review}', [App\Http\Controllers\Admin\ReviewController::class, 'show'])->name('show');
+            Route::put('/{review}/status', [App\Http\Controllers\Admin\ReviewController::class, 'updateStatus'])->name('update-status');
+            Route::delete('/{review}', [App\Http\Controllers\Admin\ReviewController::class, 'destroy'])->name('destroy');
+        });
+
+        // Order Management & Reports
+        Route::prefix('orders')->name('orders.')->group(function () {
+            Route::get('/', [App\Http\Controllers\Admin\OrderController::class, 'index'])->name('index');
+            Route::get('/{order}', [App\Http\Controllers\Admin\OrderController::class, 'show'])->name('show');
+        });
+
+        // Sales Reports
+        Route::get('/reports/sales', [App\Http\Controllers\Admin\OrderController::class, 'salesReport'])->name('reports.sales');
     });
 });
