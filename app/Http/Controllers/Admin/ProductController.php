@@ -37,7 +37,7 @@ class ProductController extends Controller
         }
 
         $products = $query->latest()->paginate(15);
-        $categories = Category::where('is_active', true)->get();
+        $categories = Category::where('is_active', 1)->get();
 
         return view('admin.products.index', compact('products', 'categories'));
     }
@@ -50,7 +50,7 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        $categories = Category::where('is_active', true)->get();
+        $categories = Category::where('is_active', 1)->get();
         return view('admin.products.edit', compact('product', 'categories'));
     }
 

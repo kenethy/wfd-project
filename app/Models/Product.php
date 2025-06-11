@@ -88,11 +88,11 @@ class Product extends Model
     // Helper methods
     public function getAverageRatingAttribute()
     {
-        return $this->reviews()->where('is_active', true)->avg('rating') ?? 0;
+        return $this->reviews()->where('status', 'approved')->avg('rating') ?? 0;
     }
 
     public function getReviewsCountAttribute()
     {
-        return $this->reviews()->where('is_active', true)->count();
+        return $this->reviews()->where('status', 'approved')->count();
     }
 }

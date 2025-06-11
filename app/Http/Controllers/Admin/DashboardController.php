@@ -22,7 +22,7 @@ class DashboardController extends Controller
             'total_products' => Product::count(),
             'total_orders' => Order::count(),
             'total_revenue' => Order::where('status', '!=', 'cancelled')->sum('total_amount'),
-            'active_users' => User::where('is_active', true)->count(),
+            'active_users' => User::where('is_active', 1)->count(),
             'pending_orders' => Order::where('status', 'pending')->count(),
             'total_reviews' => Review::count(),
             'total_categories' => Category::count(),

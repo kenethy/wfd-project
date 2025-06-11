@@ -79,7 +79,7 @@ class OrderController extends Controller
         }
 
         $orders = $query->latest()->paginate(15);
-        $categories = Category::where('is_active', true)->get();
+        $categories = Category::where('is_active', 1)->get();
 
         // Summary statistics
         $totalRevenue = $query->sum('total_amount');
